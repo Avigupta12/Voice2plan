@@ -1,6 +1,6 @@
-import React, { useState, useRef } from "react";
-import { FaMicrophone, FaStop, FaSave} from "react-icons/fa";
 import axios from "axios";
+import React, { useRef, useState } from "react";
+import { FaMicrophone, FaSave, FaStop } from "react-icons/fa";
 import "./App.css";
 
 const App = () => {
@@ -60,7 +60,7 @@ const App = () => {
     }
     console.log(text);
     try {
-      const response = await axios.post("http://localhost:5000/api/process-text", { text });
+      const response = await axios.post("https://voice-convertor-backend-2.onrender.com/api/process-text", { text });
 
       console.log("🔹 Processed Data:", response.data); // Debugging
 
@@ -95,7 +95,7 @@ const App = () => {
       localStorage.setItem("notes", JSON.stringify(updatedNotes));
 
       // Send to backend (optional)
-      const response = await fetch("http://localhost:5000/api/save-note", {
+      const response = await fetch("https://voice-convertor-backend-2.onrender.com/api/save-note", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
